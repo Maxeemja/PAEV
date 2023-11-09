@@ -1,4 +1,4 @@
-from rsa import generate_rsa, rsa_sign, rsa_verify, Keys
+from rsa import generate_rsa, rsa_sign, rsa_verify, RSAKeys
 from xor_cipher import generate_sym_key, sym_cipher
 from utils import hash_function
 
@@ -32,7 +32,7 @@ class VD:
     def __init__(self, voters: list[Voter]):
         self.voters = voters
 
-    def vote(self, signature, public_key: Keys.public_key):
+    def vote(self, signature, public_key: RSAKeys.public_key):
         for voter in self.voters:
             if voter.rsa_keys.public_key == public_key:
                 verified = rsa_verify(signature, public_key)
