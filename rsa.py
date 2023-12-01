@@ -14,10 +14,8 @@ def generate_rsa():
     return RSAKeys(public, private)
 
 
-def rsa_decrypt(message: bytes, private: RSAKeys.private_key) -> bytes:
-    message = int.from_bytes(message)
+def rsa_decrypt(message: int, private: RSAKeys.private_key) -> bytes:
     decrypted_message = pow(message, private[0], private[1])
-    decrypted_message = decrypted_message.to_bytes(128)
     return decrypted_message
 
 
@@ -28,10 +26,8 @@ def rsa_sign(message: bytes, private: RSAKeys.private_key) -> bytes:
     return signature
 
 
-def rsa_encrypt(message: bytes, public: RSAKeys.public_key) -> bytes:
-    message = int.from_bytes(message)
+def rsa_encrypt(message: int, public: RSAKeys.public_key) -> bytes:
     encrypted_message = pow(message, public[0], public[1])
-    encrypted_message = encrypted_message.to_bytes(32)
     return encrypted_message
 
 
