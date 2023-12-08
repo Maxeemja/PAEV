@@ -10,13 +10,13 @@ class DSAKeys(NamedTuple):
 
 
 def generate_dsa():
-    private = DSA.generate(bits=2048)
+    private = DSA.generate(bits=1024)
     public = private.public_key()
     return DSAKeys(private, public)
 
 
 def dsa_sign(msg, private: DSAKeys.private):
-    hash_obj = SHA256.new(msg)
+    hash_obj = SHA256.new(bytes(msg%4))
     signer = DSS.new(private, 'fips-186-3')
     signature = signer.sign(hash_obj)
     return signature
@@ -24,7 +24,7 @@ def dsa_sign(msg, private: DSAKeys.private):
 
 # wrap with try except (ValueError)
 def dsa_verify(signature, msg, public: DSAKeys.public):
-    hash_obj = SHA256.new(msg)
+    hash_obj = SHA256.new(bytes(msg%4))
     verifier = DSS.new(public, 'fips-186-3')
     verifier.verify(hash_obj, signature)
     return msg
