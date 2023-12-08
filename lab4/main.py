@@ -1,5 +1,5 @@
-
 import math
+
 
 # Hash function
 def hash_func(m):
@@ -9,6 +9,7 @@ def hash_func(m):
         hash_val *= 2
         m //= 10
     return hash_val
+
 
 # (H^power)mod(n)
 def power_and_mod(H, power, n):
@@ -20,6 +21,7 @@ def power_and_mod(H, power, n):
     else:
         return (((temp * H) % n) * temp) % n
 
+
 # Inverse modulo
 def inverse(a, b):
     for i in range(1, b):
@@ -27,13 +29,16 @@ def inverse(a, b):
             return i
     return 0
 
+
 # RSA encryption
 def rsa_enc(m, e, n):
     return power_and_mod(m, e, n)
 
+
 # RSA Decryption
 def rsa_dec(c, d, n):
     return power_and_mod(c, d, n)
+
 
 # ElGamal signature
 def elgamal_sign(M, g, x, p):
@@ -43,11 +48,13 @@ def elgamal_sign(M, g, x, p):
     s = ((m - x * r) * inverse(k, p - 1)) % (p - 1)
     return [r, s]
 
+
 # ElGamal signature verification
 def elgamal_sign_check(M, y, g, p, rs):
     m = hash_func(M)
     r, s = rs
     return ((power_and_mod(y, r, p) * power_and_mod(r, s, p)) % p == power_and_mod(g, m, p))
+
 
 class Voter:
     def __init__(self, name):
@@ -134,6 +141,7 @@ class Voter:
                 return False
         return True
 
+
 # Voting procedure
 def vote(voter, voter_list, voters, candidates):
     name = voter.get_name()
@@ -175,6 +183,7 @@ def vote(voter, voter_list, voters, candidates):
 
     return [[message], nums]
 
+
 # Tallying the results of the vote
 def end_vote(mes, candidates):
     votes = [0] * len(candidates)
@@ -184,6 +193,7 @@ def end_vote(mes, candidates):
     print("Results:")
     for i in range(len(candidates)):
         print(f"{candidates[i]} : {votes[i]}")
+
 
 if __name__ == "__main__":
     # Forming a list of voters and candidates
@@ -199,8 +209,6 @@ if __name__ == "__main__":
 
     # Forming a list of voters
     voter_list = [A, B, F, C, D, E]
-
-    # Checking the list of voters
 
     # Checking the list of voters
     voters_seen = set()
