@@ -26,3 +26,11 @@ def random_divider(n):
     div1 = choice(l)
     div2 = int(n / div1)
     return div1, div2
+
+
+def eg_encrypt(a, b, c):
+    return a, b, c
+
+
+def eg_decrypt(a, b, c):
+    return a, b, c

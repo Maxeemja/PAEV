@@ -197,15 +197,15 @@ def end_vote(mes, candidates):
 
 if __name__ == "__main__":
     # Forming a list of voters and candidates
-    voters = ["Oleksandr Zaytsev", "Pavlo Danylov", "Stepan Giga", "Oleg Gleb"]
+    voters = ["Oleksandr T", "Pavlo D", "Stepan G", "Oleg G"]
     candidates = ["Ivan Ivanenko", "Stepan Stepanenko"]
 
-    A = Voter("Oleksandr Zaytsev")
-    B = Voter("Pavlo Danylov")
-    F = Voter("Pavlo Danylov")
-    C = Voter("Stepan Giga")
-    D = Voter("Oleg Gleb")
-    E = Voter("Stepan Iga")
+    A = Voter("Oleksandr T")
+    B = Voter("Pavlo D")
+    F = Voter("Pavlo D")
+    C = Voter("Stepan G")
+    D = Voter("Oleg G")
+    E = Voter("Stepan I")
 
     # Forming a list of voters
     voter_list = [A, B, F, C, D, E]
